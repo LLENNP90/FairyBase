@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{results.title}}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet"  href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo-container">
+                <a href ="/" class="logo-link">
+                    <img src="{{ url_for('static', filename='fairy_tail_mark.png') }}" alt="logo" class="logo">
+                    <span class="web-name">AniBase</span>
+                </a>
+            </div>  
+        </header>
+        <h1>{{ results.title }}</h1>
+        <img src="{{ results.images.jpg.image_url }}" alt="{{ results.title }}" width="250">
+        <p><strong>Type:</strong> {{ results.type }}</p>
+        <p><strong>Episodes:</strong> {{ results.episodes }}</p>
+        <p><strong>Status:</strong> {{ results.status }}</p>
+        <p><strong>Aired:</strong> {{ results.aired.string }}</p>
+        <p><strong>Synopsis:</strong> {{ results.synopsis }}</p>
+
+        <!--Add to Favourites Button-->
+        <!-- This is how u store ur shit into the database-->
+        {% if is_exists == False%}
+            <div class = "button-container">
+                <form method="post" action="{{ url_for('add_favourite') }}">
+                    <input type="hidden" name="mal_id" value="{{ results.mal_id }}">
+                    <input type="hidden" name="title" value="{{ results.title }}">
+                    <input type="hidden" name="image_url" value="{{ results.images.jpg.image_url }}">
+                    <input type="hidden" name="anime_type" value="{{ results.type }}">
+                    <input type="hidden" name="episodes" value="{{ results.episodes }}">
+                    <input type="hidden" name="status" value = "favourite">
+                    
+                    <button type="submit" class="fav-btn">Add to Favourites</button>
+                </form>
+
+                <form method="post" action="{{ url_for('add_favourite') }}">
+                    <input type="hidden" name="mal_id" value="{{ results.mal_id }}">
+                    <input type="hidden" name="title" value="{{ results.title }}">
+                    <input type="hidden" name="image_url" value="{{ results.images.jpg.image_url }}">
+                    <input type="hidden" name="anime_type" value="{{ results.type }}">
+                    <input type="hidden" name="episodes" value="{{ results.episodes }}">
+                    <input type="hidden" name="status" value = "watchlist">
+                    
+                    <button type="submit" class="fav-btn">Add to Watchlist</button>
+                </form>
+            </div>
+        {% elif is_exists == True and validate_status == "favourite" %}
+            <div class = "button-container">
+                <form method = "post" action="{{url_for('remove_favourite', fav_id = db_id)}}">
+                    <button type="submit" class="fav-btn-remove">Remove from Favourites</button>
+                </form>
+            </div>
+        {% elif is_exists == True and validate_status == "watchlist" %}
+            <div class = "button-container">
+                <form method = "post" action="{{url_for('remove_favourite', fav_id = db_id)}}">
+                    <button type="submit" class="fav-btn-remove">Remove from Watchlist</button>
+                </form>
+            </div>
+        {% endif %}
+
+
+    </body>
+</html>

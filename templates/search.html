@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Search Bar</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet"  href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    
+    <body>
+        <header class="header">
+            <div class="logo-container">
+                <a href ="/" class="logo-link">
+                    <img src="{{ url_for('static', filename='fairy_tail_mark.png') }}" alt="logo" class="logo">
+                    <span class="web-name">AniBase</span>
+                </a>
+            </div>  
+            <div class="favourites">
+                <a href="/favourites" class="fav-link">
+                    <i class="fa fa-heart"></i> View Favourites
+                </a>
+            </div>
+            <div class = "watchlist">
+                <a href = "/watchlist" class="watchlist-link">
+                    <i class="fa fa-book"></i>View Watchlist
+                </a>    
+            </div>
+            <div class="search">
+                <form action="/search" method ="get">
+                    <input type="text" placeholder="Search Anime" name="search" value="{{ q }}">
+                    <button><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </header>
+        
+        <div>
+            {% if show_top%}
+            <h2>Top Anime</h2>
+            <div class="anime-grid">
+                
+                {% for a in top_anime %}
+                    <div class = "anime-card">
+                        <a href = "{{ url_for('anime_details', anime_id = a.mal_id) }}">
+                            <img src="{{ a.images.jpg.image_url }}" alt="{{ a.title }}" width="150" style="display:block; margin-bottom:10px;">
+                            <h3>{{ a.title }}</h3>
+                        </a>  
+                    </div>
+                {% endfor %}
+            </div>
+            {%endif%}
+        </div>
+        <div>
+            {% if results and show_search%}
+                <h2>Results:</h2>
+                <div class="anime-grid">
+                    {% for a in results %}
+                        <div class = "anime-card">
+                            <a href = "{{ url_for('anime_details', anime_id = a.mal_id) }}">
+                                <img src="{{ a.images.jpg.image_url }}" alt="{{ a.title }}" width="150" style="display:block; margin-bottom:10px;">
+                                <h3>{{ a.title }}</h3>
+                            </a> 
+                            <p>(ID: {{ a.mal_id }})</p> 
+                            <p>{{ a.type }}</p>
+                            <p>Episodes: {{ a.episodes }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {% if q %}
+                    <p>No results found for "{{ q }}".</p>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div>
+            {% if favs and show_favs%}
+            <h2>Favourites</h2>
+                <div class="anime-grid">
+                    {% for f in favs %}
+                    <!--the image section here is from the database, the way to access the columns of the favourites is by (anime).(column)-->
+                    <!--therefore in this case its f.image_url-->
+                        <div class = "anime-card">
+                            <a href = "{{ url_for('anime_details', anime_id = f.mal_id) }}">
+                                <img src="{{ f.image_url }}" alt="{{ f.title }}" width="150" style="display:block; margin-bottom:10px;">
+                                <h3>{{ f.title }}</h3>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <div>
+            {% if show_watchlist %}
+            <h2>WatchList</h2>
+                <div class="anime-grid">
+                    {% for w in watchlist %}
+                    <!--the image section here is from the database, the way to access the columns of the favourites is by (anime).(column)-->
+                    <!--therefore in this case its f.image_url-->
+                        <div class = "anime-card">
+                            <a href = "{{ url_for('anime_details', anime_id = w.mal_id) }}">
+                                <img src="{{ w.image_url }}" alt="{{ w.title }}" width="150" style="display:block; margin-bottom:10px;">
+                                <h3>{{ w.title }}</h3>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {%endif%}
+        </div>
+    </body>
+    
+
+</html>

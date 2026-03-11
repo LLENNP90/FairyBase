@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head><title>Your Favourites</title></head>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet"  href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo-container">
+                <a href ="/" class="logo-link">
+                    <img src="{{ url_for('static', filename='fairy_tail_mark.png') }}" alt="logo" class="logo">
+                    <span class="web-name">AniBase</span>
+                </a>
+            </div>  
+        </header>
+
+        <div>
+            <h2>Favourites</h2>
+            <div class="anime-grid">
+                {% for f in favs %}
+                <!--the image section here is from the database, the way to access the columns of the favourites is by (anime).(column)-->
+                <!--therefore in this case its f.image_url-->
+                    <div class = "anime-card">
+                        <a href = "{{ url_for('anime_details', anime_id = f.mal_id) }}">
+                            <img src="{{ f.image_url }}" alt="{{ f.title }}" width="150" style="display:block; margin-bottom:10px;">
+                            <h3>{{ f.title }}</h3>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
