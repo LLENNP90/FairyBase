@@ -1,0 +1,109 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body{
+    background-color : var(--background-color);
+
+}
+/* .header{
+    background-color : transparent;
+} */
+
+:root {
+    --background-color: #151f2e; /* Deep, rich dark blue/grey */
+    --secondary-bg-color: #5c31d2;
+    --heading-color: #0b1622;    /* Slightly darker for the header */
+    --text-color: #9fadbd;       /* Soft light blue-grey for readable text */
+    --text-light: #ffffff;       /* Pure white for headings/titles */
+    --accent-color: #ff5252;     /* A punchy, vibrant red/coral for buttons (matches your 💗) */
+    --secondary-color: #3db4f2;  /* A nice anime-style blue for your watchlist 📺 */
+    --button-hover-color: #ff2b2b; /* A brighter coral for hover effects */
+}
+
+/* ATTEMPTING SKELETON PLACEHOLDER */
+
+
+.skeleton-img{
+    width: 100%;
+    height: 350px;
+    background-color:#ddd;
+    border-radius: 10px;
+    animation : pulse 1.5s infinite ease-in-out;
+}
+.skeleton-text{
+    width: 80%;
+    height: 20px;
+    background-color: #ddd;
+    margin-top: 10px;
+    border-radius: 4px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse{
+    0%{
+        background-color: #e2e5e7;
+    }
+    50%{
+        background-color: #c1c5c8;
+    }
+    100%{
+        background-color: #e2e5e7;
+    }
+}
+
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+@media screen and (max-width: 600px) {
+    #navlist a, .search input[type=text], .search button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+    }
+    .search input[type=text] {
+        border: 1px solid #ccc;
+    }
+}
+
+p, h1{
+    color: white;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.5;
+}
