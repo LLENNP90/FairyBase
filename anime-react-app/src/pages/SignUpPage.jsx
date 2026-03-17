@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { api } from "../services/api";
 import "./Page.css";
 
 function SignupPage() {
@@ -8,6 +8,7 @@ function SignupPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [successful, setSuccessful] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -17,15 +18,15 @@ function SignupPage() {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:5000/register', {
+            const data = await api.registerUser({
                 username,
                 email,
                 password
             });
-
-            alert('Account created! Please login.');
-            navigate('/login');
-            console.log(response)
+            setSuccessful(data.message)
+            // alert('Account created! Please login.');
+            // navigate('/login');
+            console.log(data)
         } catch (err) {
             setError(err.response?.data?.error || 'Signup failed');
         } finally {
@@ -79,6 +80,8 @@ function SignupPage() {
                         {loading ? 'Creating account...' : 'Sign Up'}
                     </button>
                 </form>
+
+                {successful && <div className="successful-msg">{successful}</div>}
 
                 <p className="auth-switch">
                     Already have an account? 

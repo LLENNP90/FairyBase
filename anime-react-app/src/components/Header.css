@@ -2,11 +2,12 @@
 .search input[type=text] {
     border: 3px solid black;
     float: right;
-    padding: 6px;
+    padding: 0.5rem 6px;
     border: none;
     margin-top: 8px;
     margin-right: 16px;
     font-size: 17px;
+    border-radius: 8px;
 }
 
 /* Style the search button */
@@ -48,7 +49,7 @@
 }
 
 .header .logo {
-    height: 60px; /* control size */
+    height: 60px; 
 }
 
 .header .web-name{
@@ -128,13 +129,18 @@
 /* Dropdown css */
 .search-container{
     position: relative;
+    /* max-width: 300px; */
+    /* margin-left: 16vw;
+    margin-right: 0; */
     flex: 7;
+
 }
+
 
 .search-dropdown {
     position: absolute;
     top: 6vh;
-    left: 15vw;
+    /* left: 15vw; */
     right: 0;
     background: white;
     border: 1px solid #ddd;
@@ -142,6 +148,7 @@
     border-radius: 0 0 8px 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     max-height: 350px;
+    max-width: 290px;
     overflow-y: auto;
     z-index: 1000;
     margin-top: -5px;
@@ -249,8 +256,164 @@
     transition: border-color 0.2s;
 }
 
-
+.search-input{
+    width: 265px;
+}
 
 .profile-pic:hover{
     border-color: var(--accent-color);
+}
+
+.hamburger{
+    position: absolute;
+    right: 0;
+    display: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    margin-right: 10px;
+    user-select: none;
+}
+
+.mobile-menu{
+    display: none;
+}
+
+.search-toggle-btn {
+    display: none;
+}
+
+.search-visible, .search-mbl{
+    display: none;
+}
+
+@media (max-width: 420px){
+    .links{
+        display: none;
+    }
+
+    .hamburger{
+        display: block;
+    }
+
+    .mobile-menu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 80px; /* adjust to match your header height */
+        left: 0;
+        width: 100%;
+        background-color: var(--heading-color);
+        border-bottom: 3px solid black;
+        z-index: 999;
+        padding: 10px 0;
+    }
+
+    .mobile-menu-item {
+        padding: 14px 24px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .mobile-menu-item:hover,
+    .mobile-menu-item.active {
+        background-color: rgba(255, 255, 255, 0.15);
+        color: var(--accent-color);
+    }
+
+    .mobile-menu-divider {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        margin: 8px 16px;
+    }
+    .header .logo {
+        height: 35px;
+    }
+    .header{
+        padding: 1rem 0;
+    }
+
+    .header .web-name {
+        font-size: 20px;
+    }
+    .search input[type=text] {
+        border: 3px solid black;
+        /* float: right; */
+        /* padding: px; */
+        border: none;
+        margin-top: 8px;
+        margin-right: 16px;
+        font-size: 15px;
+        border-radius: 8px;
+    }
+
+    .search-container {
+        display: none;
+        position: absolute;
+        top: 70px;        
+        left: 0;
+        width: 100%;
+        padding: 10px 16px;
+        background-color: var(--heading-color);
+        border-bottom: 3px solid black;
+        z-index: 998;
+        box-sizing: border-box;
+    }
+
+    /* when toggled */
+    .search-container.search-visible, .search-mbl {
+        display: block;
+    }
+
+    /* Make input full width when expanded */
+    .search-container .search-input {
+        width: 100%;
+        font-size: 16px;
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: none;
+        box-sizing: border-box;
+    }
+
+    /* Dropdown fills the expanded bar */
+    .search-dropdown {
+        top: unset;
+        right: unset;
+        max-height: 350px;
+        max-width: 355px;
+        width: 100%;
+    }
+
+    /* Show the toggle button */
+    .search-toggle-btn {
+        display: block;
+        position: absolute;
+        top: 2.5vh;
+        right: 10vw;
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 22px;
+        cursor: pointer;
+        padding: 4px 8px;
+        margin-left: auto; /* push it to the right, before hamburger */
+    }
+
+    /* Hide profile icon on mobile */
+    .profile-pic {
+        display: none;
+    }
+
+    /* Keep login button visible for logged-out users */
+    .profile-container {
+        display: flex; /* keep the container */
+    }
+
+    /* But hide the dropdown too */
+    .profile-dropdown {
+        display: none;
+    }
 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const FLASK_API = 'http://localhost:5000';
+const FLASK_API = process.env.REACT_APP_DEV;
 const JIKAN_API = 'https://api.jikan.moe/v4';
 
 const getAuthHeader = () => {
@@ -110,5 +110,13 @@ export const api = {
         catch(error){
             console.log(error)
         }
+    },
+    loginUser: async (credentials) => {
+        const response = await axios.post(`${FLASK_API}/login`, credentials);
+        return response.data;
+    },
+    registerUser: async (userData) => {
+        const response = await axios.post(`${FLASK_API}/register`, userData);
+        return response.data;
     }
 };

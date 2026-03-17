@@ -1,6 +1,6 @@
 .container{
     max-width: 1400px;
-    margin: 0 0 ;
+    margin: 0 auto ;
     padding: 20px;
 }
 
@@ -264,6 +264,53 @@ h3, h2{
         & .recent-anime-info h4, p{
             margin: 0 0 10px 0;
             color: #333;
+        }
+    }
+}
+
+@media (max-width: 420px){
+
+    /* details page section */
+    .details-row{
+        flex-direction: column;
+    }
+    .col-2{
+        font-size: 13px;
+    }
+    .details-mobile{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    /* Profile page section */
+    .user-section{
+        flex-direction: column;
+    }
+    .stat-card p{
+        margin-top: -14px;
+    }
+    /* .recent-anime-list{
+        display: flex;
+        flex-direction: column;
+        margin-left: 10vw;
+    } */
+
+    .recent-anime-list{
+        display: flex;
+        flex-direction: column;
+        .recent-anime-item{
+            display: flex;
+            gap: 20px;
+            img{
+                margin-left: -8px;
+                max-height: 130px;
+            }
+            .recent-anime-info{
+                /* max-height: 50px; */
+                padding: 0 0.5rem;
+                margin-top: 0;
+                min-width: 170px;
+            }
         }
     }
 }

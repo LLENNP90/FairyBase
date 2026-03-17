@@ -114,7 +114,7 @@ def register():
         )
         db.session.add(user)
         db.session.commit()
-        return jsonify({"message": "User registered successfully", "user" : {"id": user.id, "username": user.username, "email": user.email}}), 201
+        return jsonify({"message": "User registered successfully, Please Login", "user" : {"id": user.id, "username": user.username, "email": user.email}}), 201
 
 @app.route("/login", methods=["POST", "OPTIONS"])
 def login():
@@ -384,7 +384,7 @@ def get_list():
     )
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0", debug=True, port=5000)
 
 
 # @app.route("/<name>")

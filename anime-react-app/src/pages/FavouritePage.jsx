@@ -9,9 +9,10 @@ function FavouritePage() {
 
     useEffect(() => {
         const fetchFavourites = async () => {
-            const data = await api.getFavourites();
+            const data = await api.getMyList("favourite");
             setFavourites(data);
             console.log(data);
+            console.log(favourites)
             setLoading(false);
         };
         fetchFavourites();

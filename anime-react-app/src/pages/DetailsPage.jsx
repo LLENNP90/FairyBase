@@ -105,10 +105,18 @@ function DetailsPage() {
                         <div className='synopsis'>
                             <h1>Synopsis</h1>
                             <p className='col-2'> {animeDetails.anime_details.synopsis}</p>
-                            <p><strong>Type:</strong> {animeDetails.anime_details.type}</p>
-                            <p><strong>Episodes:</strong> {animeDetails.anime_details.episodes}</p>
-                            <p><strong>Score:</strong> {animeDetails.anime_details.score}</p>
-                            <p><strong>Source:</strong> {animeDetails.anime_details.source}</p>    
+                            <div className='details-mobile'>
+                                <div>
+                                    <p><strong>Type:</strong> {animeDetails.anime_details.type}</p>
+                                    <p><strong>Episodes:</strong> {animeDetails.anime_details.episodes}</p>
+                                </div>
+                                <div>
+                                    <p><strong>Score:</strong> {animeDetails.anime_details.score}</p>
+                                    <p><strong>Source:</strong> {animeDetails.anime_details.source}</p>
+                                </div>
+                            </div>
+
+    
                         </div>
                         
                     </div>

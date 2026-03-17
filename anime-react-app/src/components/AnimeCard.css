@@ -48,3 +48,9 @@
     color: white;
     text-decoration: none;
 }
+
+@media (max-width: 420px){
+    .anime-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { api } from "../services/api";
 import "./Page.css";
 
 function LoginPage() {
@@ -17,21 +17,21 @@ function LoginPage() {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:5000/login', {
+            const data = await api.loginUser({
                 username,
                 password
             });
 
             // Save token to localStorage ← THIS IS WHERE TOKEN IS STORED!
-            localStorage.setItem('token', response.data.token);
-            localStorage.setItem('user', JSON.stringify(response.data.user));
-            setSuccessful(response.data.message);
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            setSuccessful(data.message);
             setTimeout(() => {
                 navigate('/');
             },2000);
              // Go to homepage
         } catch (err) {
-            setError(err.response?.data?.error || 'Login failed');
+            setError(err.response?.data?.error || "FUCK IS WRONG WITH");
         } finally {
             setLoading(false);
         }
