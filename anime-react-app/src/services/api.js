@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const FLASK_API = process.env.REACT_APP_DEV;
+const FLASK_API = process.env.REACT_APP_PROD;
 const JIKAN_API = 'https://api.jikan.moe/v4';
 
 const getAuthHeader = () => {
