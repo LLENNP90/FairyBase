@@ -12,7 +12,7 @@ BASE_URL = "https://api.jikan.moe/v4"
 app = Flask(__name__)
 CORS(app, resources={
     r"/*": {
-        "origins": ["http://localhost:3000", "http://192.168.0.2:3000"],
+        "origins": ["http://localhost:5000", "http://192.168.0.2:5000"],
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization"]  #important
     }
