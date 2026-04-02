@@ -47,12 +47,12 @@ body{
 
 :root {
     --background-color: #151f2e; /* Deep, rich dark blue/grey */
-    --secondary-bg-color: #5c31d2;
+    --secondary-bg-color: #303f9f;
     --heading-color: #0b1622;    /* Slightly darker for the header */
     --text-color: #9fadbd;       /* Soft light blue-grey for readable text */
     --text-light: #ffffff;       /* Pure white for headings/titles */
-    --accent-color: #ff5252;     /* A punchy, vibrant red/coral for buttons (matches your 💗) */
-    --secondary-color: #3db4f2;  /* A nice anime-style blue for your watchlist 📺 */
+    --accent-color: #ff5252;     /* A vibrant red/coral for buttons  */
+    --secondary-color: #3db4f2;  /* A nice blue  */
     --button-hover-color: #ff2b2b; /* A brighter coral for hover effects */
 }
 

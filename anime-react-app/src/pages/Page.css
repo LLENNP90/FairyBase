@@ -193,7 +193,7 @@ h3, h2{
     display: flex;
     flex-direction: column;
     position: relative;
-    background-color: var(--secondary-bg-color);
+    background: linear-gradient(270deg, var(--background-color) 0%, var(--secondary-bg-color) 100%);
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 30px;
@@ -205,7 +205,7 @@ h3, h2{
 .user-section{
     display: flex;
     & h3{
-        color: black;
+        color: white;
     }
     
 }
@@ -216,7 +216,7 @@ h3, h2{
 .stats-grid{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 30px;
     margin-top: 11px;
 }
 
@@ -224,9 +224,9 @@ h3, h2{
     
     min-width: 8vw;
     max-height: 15vh;
-    border: solid 3px black;
+    border: solid 3px transparent;
     border-radius: 8px;
-    background-color: var(--accent-color);
+    background: linear-gradient(90deg, var(--accent-color)0%, #c33 100%);
     padding: 0 0.5rem;
     text-align: center;
 }
@@ -243,10 +243,15 @@ h3, h2{
 .recent-anime-item{
     /* display: flex; */
     padding: 0.1rem 0;
-    cursor: pointer;
+    
+    /* min-height: 250px; */
     & img{
+        cursor: pointer;
         border-radius: 8px;
-        max-height: 310px;
+        object-fit: cover;
+        min-height: 310px;
+        max-width: 220px;
+        /* max-height: 310px; */
         box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.1);
     }
 
